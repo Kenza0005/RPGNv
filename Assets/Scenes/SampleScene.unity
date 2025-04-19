@@ -322,6 +322,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7131471763049209510, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5716681864270162303, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
       propertyPath: m_LocalScale.x
       value: 26.172512
@@ -380,7 +388,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -4216859302048453862, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 963194228}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
       insertIndex: -1
@@ -388,6 +399,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 764127644}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 764127646}
   m_SourcePrefab: {fileID: 100100000, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
 --- !u!1 &764127643 stripped
 GameObject:
@@ -413,10 +427,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.108296104
-  m_Height: 0.45640028
+  m_Radius: 0.08
+  m_Height: 0.42792973
   m_Direction: 1
-  m_Center: {x: -0.0110200215, y: 0.19741453, z: 0.010839258}
+  m_Center: {x: -0.0110200215, y: 0.2116498, z: 0.010839258}
 --- !u!54 &764127645
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -444,6 +458,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &764127646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764127643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f890ce9bccfee40bcb71bb80803cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animations: {fileID: 764127647}
+  walkSpeed: 19
+  runSpeed: 25
+  turnSpeed: 200
+  inputFront: 119
+  inputBack: 115
+  inputLeft: 97
+  inputRight: 100
+  inputRun: 304
+  inputJump: 32
+  jumpSpeed: {x: 0, y: 4.5, z: 0}
+--- !u!111 &764127647 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: -5716681864270162303, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
+  m_PrefabInstance: {fileID: 764127642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &764127648 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 608191cf3aeaa85419bb4558fccb064b, type: 3}
+  m_PrefabInstance: {fileID: 764127642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &864234275
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,12 +669,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.227, z: -0.557}
+  m_LocalScale: {x: 0.038208023, y: 0.03537415, z: 0.038579386}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 764127648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1248818077
 PrefabInstance:
@@ -1265,7 +1312,6 @@ BoxCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 864234278}
   - {fileID: 1937291221}
