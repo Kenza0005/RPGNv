@@ -16,20 +16,16 @@ public class PlayerInventory : MonoBehaviour
 
     private InputManager inputManagerDatabase;
 
-    public GameObject HPMANACanvas;
-
-    Text hpText;
-    Text manaText;
     Image hpImage;
     Image manaImage;
 
-    float maxHealth = 100;
+    public float maxHealth = 100;
     float maxMana = 100;
     float maxDamage = 0;
     float maxArmor = 0;
 
     public float currentHealth = 60;
-    float currentMana = 100;
+    public float currentMana = 100;
     float currentDamage = 0;
     float currentArmor = 0;
 
@@ -157,19 +153,10 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
-        //if (HPMANACanvas != null)
-        //{
-        //    hpText = HPMANACanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
-
-        //    manaText = HPMANACanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
-
-        //    hpImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-        //    manaImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-
-        //    UpdateHPBar();
-        //    UpdateManaBar();
-        //}
-
+        // Récupérer les images currentHP et currentMana
+        hpImage = GameObject.Find("CurrentHP").GetComponent<Image>();
+        manaImage = GameObject.Find("CurrentMana").GetComponent<Image>();
+     
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
 
@@ -234,11 +221,7 @@ public class PlayerInventory : MonoBehaviour
                     currentDamage += item.itemAttributes[i].attributeValue;
             }
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
+       
     }
 
     public void OnGearItem(Item item)
@@ -254,11 +237,7 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage += item.itemAttributes[i].attributeValue;
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
+        
     }
 
     public void OnUnEquipItem(Item item)
@@ -274,11 +253,7 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage -= item.itemAttributes[i].attributeValue;
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
+        
     }
 
 
@@ -286,6 +261,12 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //pour la barre de vie
+        float percentageHP=((currentHealth*100)/maxHealth)/100;
+        hpImage.fillAmount=percentageHP;
+        //pour la barre de mana
+        float percentageMana=((currentMana*100)/maxMana)/100;
+        manaImage.fillAmount=percentageMana;
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {
             if (!characterSystem.activeSelf)

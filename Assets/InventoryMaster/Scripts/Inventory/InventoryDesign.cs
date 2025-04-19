@@ -82,25 +82,35 @@ public class InventoryDesign : MonoBehaviour
         }
     }
 
-    public void updateAllSlots()
+   public void updateAllSlots()
+{
+
+    Image slot = null;
+#if UNITY_EDITOR
+    string prefabPath = "Assets/InventoryMaster/Resources/Prefabs/Slot - Inventory.prefab";
+
+    // Crée un GameObject vide si nécessaire
+    GameObject emptyPrefab = new GameObject("Slot - Inventory");
+
+    // Sauvegarde ou met à jour le prefab
+    GameObject prefabInstance = PrefabUtility.SaveAsPrefabAssetAndConnect(
+        emptyPrefab, prefabPath, InteractionMode.UserAction);
+
+    // Détruit l'objet temporaire après sauvegarde
+    GameObject.DestroyImmediate(emptyPrefab);
+#endif
+
+    for (int i = 0; i < transform.GetChild(1).childCount; i++)
     {
-        Image slot = null;
-#if UNITY_EDITOR
-        Object prefab = PrefabUtility.CreateEmptyPrefab("Assets/InventoryMaster/Resources/Prefabs/Slot - Inventory.prefab");
-#endif
-
-        for (int i = 0; i < transform.GetChild(1).childCount; i++)
-        {
-            slot = transform.GetChild(1).GetChild(i).GetComponent<Image>();
-            slot.sprite = slotDesignTemp.sprite;
-            slot.color = slotDesignTemp.color;
-            slot.material = slotDesignTemp.material;
-            slot.type = slotDesignTemp.type;
-            slot.fillCenter = slotDesignTemp.fillCenter;
-        }
-#if UNITY_EDITOR
-        PrefabUtility.ReplacePrefab(slot.gameObject, prefab, ReplacePrefabOptions.ConnectToPrefab);
-#endif
-
+        slot = transform.GetChild(1).GetChild(i).GetComponent<Image>();
+        slot.sprite = slotDesignTemp.sprite;
+        slot.color = slotDesignTemp.color;
+        slot.material = slotDesignTemp.material;
+        slot.type = slotDesignTemp.type;
+        slot.fillCenter = slotDesignTemp.fillCenter;
     }
+#if UNITY_EDITOR
+    Debug.Log($"Prefab mis à jour : {prefabPath}");
+#endif
+}
 }
