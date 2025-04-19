@@ -154,9 +154,8 @@ public class PlayerInventory : MonoBehaviour
     void Start()
     {
         // Récupérer les images currentHP et currentMana
-        hpImage = GameObject.Find("CurrentHP").GetComponent<Image>();
-        manaImage = GameObject.Find("CurrentMana").GetComponent<Image>();
-     
+        hpImage = GameObject.Find("currentHP").GetComponent<Image>();
+        manaImage = GameObject.Find("currentMana").GetComponent<Image>();
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
 
