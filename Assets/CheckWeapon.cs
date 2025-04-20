@@ -12,43 +12,53 @@ public class CheckWeapon : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        // Verification si une arme est ajouter a un slot 
         if (transform.childCount > 0)
         {
             weaponID = gameObject.GetComponentInChildren<ItemOnObject>().item.itemID;
         }
-        else
+    }
+    void Update()
+    {
+        if (transform.childCount > 0)
         {
-            weaponID = 0;
-            for (int i = 1; i < weaponList.Count; i++)
-            {
-                 weaponList[1].SetActive(true);
-            }
+            weaponID = gameObject.GetComponentInChildren<ItemOnObject>().item.itemID;
         }
+        Debug.Log("Weapon ID: " + weaponID);
+        // Verification si une arme est ajouter a un slot 
+        // else
+        // {
+        //     // weaponID = 0;
+        //     // for (int i = 0; i < weaponList.Count; i++)
+        //     // {
+        //     //      weaponList[i].SetActive(false);
+        //     // }
+        // }
          // l'epee
         if (weaponID == 1 && transform.childCount > 0)
         {
+            Debug.Log("Enter Epee");
             for (int i = 0; i < weaponList.Count; i++)
             {
                 if (i == 0)
                 {
-                    weaponList[0].SetActive(true);
+                    weaponList[i].SetActive(true);
                 }
             }
         }
         // bracer
-        if (weaponID == 2 && transform.childCount > 0)
-        {
-            for (int i = 1; i < weaponList.Count; i++)
-            {
-                if (i == 1)
-                {
-                    weaponList[1].SetActive(true);
-                }
-            }
-        }
+        // if (weaponID == 3 && transform.childCount > 0)
+        // {
+        //     Debug.Log("Enter Bracer");
+        //     for (int i = 1; i < weaponList.Count; i++)
+        //     {
+        //         if (i == 1)
+        //         {
+        //             weaponList[i].SetActive(true);
+        //         }
+        //     }
+        // }
 
     }
 }
