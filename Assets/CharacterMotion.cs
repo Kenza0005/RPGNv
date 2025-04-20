@@ -30,7 +30,8 @@ public class CharacterMotion : MonoBehaviour
             playerCollider.bounds.center,
             new Vector3(playerCollider.bounds.center.x, playerCollider.bounds.min.y - 0.1f, playerCollider.bounds.center.z),
             0.08f,
-            3 // Layer 3 uniquement
+            3
+             // Layer 3 uniquement
         );
     }
     void Start()

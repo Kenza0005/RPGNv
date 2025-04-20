@@ -496,7 +496,7 @@ MonoBehaviour:
   inputRight: 100
   inputRun: 304
   inputJump: 32
-  jumpSpeed: {x: 0, y: 4.5, z: 0}
+  jumpSpeed: {x: 0, y: 6, z: 0}
   isDead: 0
 --- !u!111 &764127647 stripped
 Animation:
