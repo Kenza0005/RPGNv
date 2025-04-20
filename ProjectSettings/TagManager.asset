@@ -3,12 +3,26 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Canvas
+  - Panel
+  - MainInventory
+  - Timer
+  - Hotbar
+  - CraftSystem
+  - DraggingItem
+  - Tooltip
+  - EquipmentSystem
+  - Slots
+  - ResultSlot
+  - Slot
+  - Item
+  - ItemIcon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
