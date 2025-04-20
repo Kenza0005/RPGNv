@@ -135,11 +135,23 @@ public class CharacterMotion : MonoBehaviour
         }
 
     }
-    public void Attack()
+// public void Attack()
+// {
+//     if (!isAttacking)
+//     {
+//         isAttacking = true;
+//         animations.Play("attack");
+//         currentCooldown = animations["attack"].length; // Empêche les autres animations pendant ce temps
+//         Debug.Log("Attaque lancée !");
+//     }
+// }
+public void Attack()
     {
         isAttacking = true;
         animations.Play("attack");
         Debug.Log("Attaque lancée !");
     }
+
+
 
 }
