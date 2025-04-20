@@ -16,6 +16,10 @@ public class PlayerInventory : MonoBehaviour
 
     private InputManager inputManagerDatabase;
 
+   
+
+    Text hpText;
+    Text manaText;
     Image hpImage;
     Image manaImage;
 
@@ -153,9 +157,9 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
-        // Récupérer les images currentHP et currentMana
-        hpImage = GameObject.Find("currentHP").GetComponent<Image>();
-        manaImage = GameObject.Find("currentMana").GetComponent<Image>();
+         // Récupérer les images currentHP et currentMana
+        hpImage=GameObject.Find("currentHP").GetComponent<Image>();
+        manaImage=GameObject.Find("currentMana").GetComponent<Image>();
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
 
@@ -236,7 +240,7 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage += item.itemAttributes[i].attributeValue;
         }
-        
+       
     }
 
     public void OnUnEquipItem(Item item)
@@ -252,7 +256,7 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage -= item.itemAttributes[i].attributeValue;
         }
-        
+       
     }
 
 
@@ -266,6 +270,7 @@ public class PlayerInventory : MonoBehaviour
         //pour la barre de mana
         float percentageMana=((currentMana*100)/maxMana)/100;
         manaImage.fillAmount=percentageMana;
+
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {
             if (!characterSystem.activeSelf)
