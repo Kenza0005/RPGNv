@@ -23,18 +23,19 @@ public class PlayerInventory : MonoBehaviour
     Image hpImage;
     Image manaImage;
 
-    public float maxHealth = 100;
+    float maxHealth = 100;
     float maxMana = 100;
     float maxDamage = 0;
     float maxArmor = 0;
 
     public float currentHealth = 60;
     public float currentMana = 100;
-    float currentDamage = 0;
-    float currentArmor = 0;
+    public float currentDamage = 0;
+    public float currentArmor = 0;
 
     int normalSize = 3;
-
+    public CharacterMotion characterMotion;
+    public Animation playerAnimation;
     public void OnEnable()
     {
         Inventory.ItemEquip += OnBackpack;
@@ -160,6 +161,9 @@ public class PlayerInventory : MonoBehaviour
          // Récupérer les images currentHP et currentMana
         hpImage=GameObject.Find("currentHP").GetComponent<Image>();
         manaImage=GameObject.Find("currentMana").GetComponent<Image>();
+        // Recupere CharacterMotion et Animation 
+        characterMotion = gameObject.GetComponent<CharacterMotion>();
+        playerAnimation = gameObject.GetComponent<Animation>();
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
 
@@ -190,7 +194,22 @@ public class PlayerInventory : MonoBehaviour
     //    manaImage.fillAmount = fillAmount;
     //}
 
-
+    public void ApplyDamage(float TheDamage)
+    {
+        // la fameuse equation: PDV = PDV - (damage - (armor * damage)/100)
+        currentHealth = currentHealth - (TheDamage - ((currentArmor * TheDamage)/100));
+        if(currentHealth <= 0)
+        {
+            Dead();
+        }
+    }
+    public void Dead()
+    {
+        // On desctive la possiblite de deplacer le personnage 
+        characterMotion.isDead = true;
+        // joue l'animation de mort
+        playerAnimation.Play("diehard");
+    }
     public void OnConsumeItem(Item item)
     {
         for (int i = 0; i < item.itemAttributes.Count; i++)
@@ -232,13 +251,13 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
             if (item.itemAttributes[i].attributeName == "Health")
-                maxHealth += item.itemAttributes[i].attributeValue;
+                currentHealth += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana += item.itemAttributes[i].attributeValue;
+                currentMana += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
-                maxArmor += item.itemAttributes[i].attributeValue;
+                currentArmor += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
-                maxDamage += item.itemAttributes[i].attributeValue;
+               currentDamage += item.itemAttributes[i].attributeValue;
         }
        
     }
@@ -248,13 +267,13 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
             if (item.itemAttributes[i].attributeName == "Health")
-                maxHealth -= item.itemAttributes[i].attributeValue;
+                currentHealth -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana -= item.itemAttributes[i].attributeValue;
+                currentMana -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
-                maxArmor -= item.itemAttributes[i].attributeValue;
+                currentArmor -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
-                maxDamage -= item.itemAttributes[i].attributeValue;
+                currentDamage -= item.itemAttributes[i].attributeValue;
         }
        
     }
@@ -270,7 +289,10 @@ public class PlayerInventory : MonoBehaviour
         //pour la barre de mana
         float percentageMana=((currentMana*100)/maxMana)/100;
         manaImage.fillAmount=percentageMana;
-
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            ApplyDamage(10);
+        }
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {
             if (!characterSystem.activeSelf)

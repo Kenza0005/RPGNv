@@ -21,6 +21,8 @@ public class CharacterMotion : MonoBehaviour
     public KeyCode inputJump = KeyCode.Space;
     public Vector3 jumpSpeed;
     private CapsuleCollider playerCollider;
+    // si notre personnage est mort 
+    public bool isDead = false;
     // Vérifie si le personnage est au sol (LayerMask 3)
     bool IsGrounded()
     {
@@ -40,7 +42,9 @@ public class CharacterMotion : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(inputFront) && Input.GetKey(inputRun))
+       if(!isDead)
+       {
+             if (Input.GetKey(inputFront) && Input.GetKey(inputRun))
         {
             transform.Translate(0,0,runSpeed *Time.deltaTime);
             animations.Play("run");
@@ -83,6 +87,8 @@ public class CharacterMotion : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().velocity = jumpSpeed;
           
         }
+       }
+
        
     }
     
