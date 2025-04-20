@@ -43,3 +43,17 @@ MonoBehaviour:
     itemAttributes:
     - attributeName: Damage
       attributeValue: 10
+  - itemName: Helmet
+    itemID: 2
+    itemDesc: Un casque basic
+    itemIcon: {fileID: 21300000, guid: 63dca6d4e4e873a4cb09997656d54082, type: 3}
+    itemModel: {fileID: 1385783958605927367, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
+    itemValue: 10
+    itemType: 4
+    itemWeight: 5
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 10
+    itemAttributes:
+    - attributeName: Armor
+      attributeValue: 10
