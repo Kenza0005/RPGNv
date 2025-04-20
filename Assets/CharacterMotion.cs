@@ -28,6 +28,9 @@ public class CharacterMotion : MonoBehaviour
     private CapsuleCollider playerCollider;
     // si notre personnage est mort 
     public bool isDead = false;
+    // Variable du raycast
+    public float attackRange;
+    public GameObject rayHit;
     // Vérifie si le personnage est au sol (LayerMask 3)
     bool IsGrounded()
     {
@@ -43,6 +46,7 @@ public class CharacterMotion : MonoBehaviour
     {
         animations = gameObject.GetComponent<Animation>();
         playerCollider = gameObject.GetComponent<CapsuleCollider>();
+        rayHit = GameObject.Find("RayHit");
 
     }
 
@@ -147,9 +151,24 @@ public class CharacterMotion : MonoBehaviour
 // }
 public void Attack()
     {
+        if(!isAttacking)
+        {
+            animations.Play("attack");
+            Debug.Log("Attaque lancée !");
+            RaycastHit hit;
+            if(Physics.Raycast(rayHit.transform.position, transform.TransformDirection(Vector3.forward),out hit,attackRange))
+            {
+                Debug.DrawLine(rayHit.transform.position, hit.point, Color.red);
+                if(hit.transform.tag == "test")
+                {
+                    print(hit.transform.name + "detected!");
+                }
+
+            }
+        }
         isAttacking = true;
-        animations.Play("attack");
-        Debug.Log("Attaque lancée !");
+        
+        
     }
 
 
