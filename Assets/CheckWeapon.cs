@@ -36,13 +36,13 @@ public class CheckWeapon : MonoBehaviour
             }
         }
         // si le jeu detecte plusieurs armes dans la main du personnage on les desactive toute sauf celle qui est vraiment equipee
-        // if(bodyPart.transform.childCount > 1)
-        // {
-        //     for (int i = 0; i < weaponList.Count ; i++)
-        //     {
-        //         weaponList[i].SetActive(false);
-        //     }
-        // }
+        if(bodyPart.transform.childCount > 1)
+        {
+            for (int i = 0; i < weaponList.Count ; i++)
+            {
+                weaponList[i].SetActive(false);
+            }
+        }
          // l'epee
         if (weaponID == 1 && transform.childCount > 0)
         {
