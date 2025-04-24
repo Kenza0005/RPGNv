@@ -1132,7 +1132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776550015078099375, guid: a63a04826aa9fdc498f9c2ef7d165e2c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 735.85
+      value: 713.6
       objectReference: {fileID: 0}
     - target: {fileID: 3776550015078099375, guid: a63a04826aa9fdc498f9c2ef7d165e2c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3624,6 +3624,7 @@ MonoBehaviour:
   weaponList:
   - {fileID: 3978677850503362471}
   - {fileID: 2082100056}
+  bodyPart: {fileID: 0}
 --- !u!1 &1565496828
 GameObject:
   m_ObjectHideFlags: 0
@@ -3759,7 +3760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794047717605356385, guid: 4bd8129514d56f445a0e55e27b36c9d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 746
+      value: 712.6
       objectReference: {fileID: 0}
     - target: {fileID: 3794047717605356385, guid: 4bd8129514d56f445a0e55e27b36c9d1, type: 3}
       propertyPath: m_LocalPosition.y

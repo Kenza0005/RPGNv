@@ -9,7 +9,8 @@ public class CheckWeapon : MonoBehaviour
     [SerializeField]
     // Liste de nos armes (Objet qui se trouve dans la main du personnage)
     public List<GameObject> weaponList = new List<GameObject>();
-
+    // Mmbre de notre personnage
+    public GameObject bodyPart;
 
     // Update is called once per frame
     void Start()
@@ -25,15 +26,22 @@ public class CheckWeapon : MonoBehaviour
         {
             weaponID = gameObject.GetComponentInChildren<ItemOnObject>().item.itemID;
         }
-        Debug.Log("Weapon ID: " + weaponID);
         // Verification si une arme est ajouter a un slot 
-        // else
+        else
+        {
+             weaponID = 0;
+            for (int i = 0; i < weaponList.Count; i++)
+            {
+                  weaponList[i].SetActive(false);
+            }
+        }
+        // si le jeu detecte plusieurs armes dans la main du personnage on les desactive toute sauf celle qui est vraiment equipee
+        // if(bodyPart.transform.childCount > 1)
         // {
-        //     // weaponID = 0;
-        //     // for (int i = 0; i < weaponList.Count; i++)
-        //     // {
-        //     //      weaponList[i].SetActive(false);
-        //     // }
+        //     for (int i = 0; i < weaponList.Count ; i++)
+        //     {
+        //         weaponList[i].SetActive(false);
+        //     }
         // }
          // l'epee
         if (weaponID == 1 && transform.childCount > 0)
