@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sword_1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1958875ebe8c50b4b9cca36e96b6102d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1958875ebe8c50b4b9cca36e96b6102d, type: 3}
       propertyPath: m_LocalScale.x
       value: 8.750658
