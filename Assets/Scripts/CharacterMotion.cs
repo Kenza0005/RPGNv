@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterMotion : MonoBehaviour
 {
+    // Scripts playerinventory
+    PlayerInventory playerInv;
+
     // Animation du personnage 
     public Animation animations;
     // Vitesse de déplacement du personnage
@@ -46,6 +49,7 @@ public class CharacterMotion : MonoBehaviour
     {
         animations = gameObject.GetComponent<Animation>();
         playerCollider = gameObject.GetComponent<CapsuleCollider>();
+        playerInv = gameObject.GetComponent<PlayerInventory>();
         rayHit = GameObject.Find("RayHit");
 
     }
@@ -151,23 +155,23 @@ public class CharacterMotion : MonoBehaviour
 // }
 public void Attack()
     {
-        if(!isAttacking)
+        if (!isAttacking)
         {
             animations.Play("attack");
-            Debug.Log("Attaque lancée !");
+
             RaycastHit hit;
-            if(Physics.Raycast(rayHit.transform.position, transform.TransformDirection(Vector3.forward),out hit,attackRange))
+
+            if(Physics.Raycast(rayHit.transform.position, transform.TransformDirection(Vector3.forward), out hit, attackRange))
             {
                 Debug.DrawLine(rayHit.transform.position, hit.point, Color.red);
-                if(hit.transform.tag == "test")
-                {
-                    print(hit.transform.name + "detected!");
+
+                if (hit.transform.tag == "Enemy") {
+                    hit.transform.GetComponent<enemyAi>().ApplyDammage(playerInv.currentDamage);
                 }
 
             }
+            isAttacking = true;
         }
-        isAttacking = true;
-        
         
     }
 

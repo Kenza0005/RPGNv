@@ -46,12 +46,12 @@ public class CheckItem : MonoBehaviour
          // l'epee
         if (itemID == 1 && transform.childCount > 0)
         {
-            Debug.Log("Enter Epee");
+            
             for (int i = 0; i < itemList.Count; i++)
             {
                 if (i == 0)
                 {
-                     Debug.Log("Enter Epee active !!");
+                     
                     itemList[i].SetActive(true);
                 }
             }
@@ -59,7 +59,7 @@ public class CheckItem : MonoBehaviour
         //Le halmet (le casque)
         if (itemID == 2 && transform.childCount > 0)
         {
-            Debug.Log("Enter Bracer");
+            
             for (int i = 0; i < itemList.Count; i++)
             {
                 if (i == 0)

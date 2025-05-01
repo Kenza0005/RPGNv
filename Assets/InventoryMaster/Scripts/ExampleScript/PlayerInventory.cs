@@ -194,13 +194,17 @@ public class PlayerInventory : MonoBehaviour
     //    manaImage.fillAmount = fillAmount;
     //}
 
-    public void ApplyDamage(float TheDamage)
-    {
-        // la fameuse equation: PDV = PDV - (damage - (armor * damage)/100)
-        currentHealth = currentHealth - (TheDamage - ((currentArmor * TheDamage)/100));
-        if(currentHealth <= 0)
+    public void ApplyDamage(float TheDammage)
+    {  
+        if (!characterMotion.isDead)
         {
-            Dead();
+            // la fameuse équation : PDV = PDV -(damage - ((armor * damage) / 100))
+            currentHealth = currentHealth - (TheDammage - ((currentArmor * TheDammage) / 100));
+
+            if (currentHealth <= 0)
+            {
+                Dead();
+            }
         }
     }
     public void Dead()
@@ -289,10 +293,6 @@ public class PlayerInventory : MonoBehaviour
         //pour la barre de mana
         float percentageMana=((currentMana*100)/maxMana)/100;
         manaImage.fillAmount=percentageMana;
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            ApplyDamage(10);
-        }
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {
             if (!characterSystem.activeSelf)
