@@ -1346,6 +1346,7 @@ PrefabInstance:
     - {fileID: 1385783958605927373, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
     - {fileID: 1385783958605927371, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
     - {fileID: 1385783958605927369, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
+    - {fileID: 1385783958605927375, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1385783958605927367, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
@@ -1354,6 +1355,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1385783958605927367, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 942463389}
+    - targetCorrespondingSourceObject: {fileID: 1385783958605927367, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 942463393}
   m_SourcePrefab: {fileID: 100100000, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
 --- !u!1 &942463388 stripped
 GameObject:
@@ -1380,7 +1384,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 005cade2b6a6bbc429e3b5b268007d0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1427,6 +1431,14 @@ MonoBehaviour:
     indexItemInList: 999
     rarity: 0
     itemAttributes: []
+--- !u!33 &942463393
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942463388}
+  m_Mesh: {fileID: 4300006, guid: 181bd2b13872db74889b22424d942c55, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5799,10 +5811,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3160806385033554097, guid: 1bfaff3cdcdb1d44da31e187d4dbfcff, type: 3}
       propertyPath: loots.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3160806385033554097, guid: 1bfaff3cdcdb1d44da31e187d4dbfcff, type: 3}
       propertyPath: loots.Array.data[0]
+      value: 
+      objectReference: {fileID: 942463388}
+    - target: {fileID: 3160806385033554097, guid: 1bfaff3cdcdb1d44da31e187d4dbfcff, type: 3}
+      propertyPath: loots.Array.data[1]
       value: 
       objectReference: {fileID: 1029003568}
     - target: {fileID: 4956001256718009394, guid: 1bfaff3cdcdb1d44da31e187d4dbfcff, type: 3}
