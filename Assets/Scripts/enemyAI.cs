@@ -146,7 +146,7 @@ public class enemyAi : MonoBehaviour {
         // apparition du loot
         int randomNumber = Random.Range(0, loots.Length);
         GameObject finalLoot = loots[randomNumber];
-        Instantiate(finalLoot, transform.position, transform.rotation);
+        try { Instantiate(finalLoot, transform.position, transform.rotation); } catch { /*Do nothing*/}        
 
         Destroy(transform.gameObject, 5);
         
