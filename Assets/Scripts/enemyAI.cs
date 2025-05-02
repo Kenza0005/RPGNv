@@ -137,17 +137,25 @@ public class enemyAi : MonoBehaviour {
         agent.destination = basePositions;
     }
 
-    public void Dead()
-    {
-        gameObject.GetComponent<CapsuleCollider>().enabled = false;
-        isDead = true;
-        animations.Play("die");
+   public void Dead()
+{
+    gameObject.GetComponent<CapsuleCollider>().enabled = false;
+    isDead = true;
+    animations.Play("die");
 
-        // apparition du loot
+    // apparition du loot (si disponible)
+    if (loots != null && loots.Length > 0)
+    {
         int randomNumber = Random.Range(0, loots.Length);
         GameObject finalLoot = loots[randomNumber];
         Instantiate(finalLoot, transform.position, transform.rotation);
-
-        Destroy(transform.gameObject, 5);
     }
+    else
+    {
+        Debug.LogWarning("Aucun loot configuré pour cet ennemi !");
+    }
+
+    Destroy(gameObject, 5);
+}
+
 }
