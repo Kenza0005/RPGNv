@@ -51,8 +51,14 @@ public class CheckItem : MonoBehaviour
             {
                 if (i == 0)
                 {
-                     
-                    itemList[i].SetActive(true);
+                    if (itemList != null && itemList.Count > 0 && itemList[0] != null)
+                    {
+                        itemList[0].SetActive(true);
+                    }
+                else
+                {
+                    Debug.LogWarning("Pas d'objet valide dans itemList[0] (il a peut-être été détruit).");
+                }
                 }
             }
         }

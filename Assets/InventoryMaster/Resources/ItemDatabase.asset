@@ -50,7 +50,7 @@ MonoBehaviour:
     itemModel: {fileID: 1385783958605927367, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
     itemValue: 10
     itemType: 4
-    itemWeight: 5
+    itemWeight: 40
     maxStack: 1
     indexItemInList: 999
     rarity: 10
