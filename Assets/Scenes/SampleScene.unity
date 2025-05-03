@@ -1255,15 +1255,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1385783958605893607, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.2390537
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 1385783958605893607, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.8142912
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 1385783958605893607, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.9036374
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 1385783958605893607, guid: 062bbf2db62ca774599592dad50d6ec3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5811,7 +5811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3160806385033554097, guid: 1bfaff3cdcdb1d44da31e187d4dbfcff, type: 3}
       propertyPath: loots.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3160806385033554097, guid: 1bfaff3cdcdb1d44da31e187d4dbfcff, type: 3}
       propertyPath: loots.Array.data[0]
