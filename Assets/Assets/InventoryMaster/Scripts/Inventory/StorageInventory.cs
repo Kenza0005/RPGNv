@@ -43,7 +43,8 @@ public class StorageInventory : MonoBehaviour
     bool closeInv;
 
     bool showStorage;
-
+    // est ce que c'est un coffre ou pas !
+    public bool isChest;
     public void addItemToStorage(int id, int value)
     {
         Item item = itemDatabase.getItemByID(id);
@@ -60,7 +61,7 @@ public class StorageInventory : MonoBehaviour
         inv = inventory.GetComponent<Inventory>();
         ItemDataBaseList inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
 
-        int creatingItemsForChest = 1;
+        int creatingItemsForChest = 0;
 
         int randomItemAmount = Random.Range(1, itemAmount);
 
@@ -119,6 +120,10 @@ public class StorageInventory : MonoBehaviour
 
         if (distance > distanceToOpenStorage && showStorage)
         {
+            if (isChest)
+                {
+                    gameObject.GetComponent<Animator>().SetTrigger("Activate");
+                }
             showStorage = false;
             if (inventory.activeSelf)
             {
@@ -143,6 +148,10 @@ public class StorageInventory : MonoBehaviour
             yield return new WaitForSeconds(timeToOpenStorage);
             if (showStorage)
             {
+                if (isChest)
+                {
+                    gameObject.GetComponent<Animator>().SetTrigger("Activate");
+                }
                 inv.ItemsInInventory.Clear();
                 inventory.SetActive(true);
                 addItemsToInventory();
@@ -153,6 +162,10 @@ public class StorageInventory : MonoBehaviour
         }
         else
         {
+            if (isChest)
+                {
+                    gameObject.GetComponent<Animator>().SetTrigger("Activate");
+                }
             storageItems.Clear();
             setListofStorage();
             inventory.SetActive(false);

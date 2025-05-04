@@ -147,6 +147,8 @@ public class enemyAi : MonoBehaviour {
         int randomNumber = Random.Range(0, loots.Length);
         GameObject finalLoot = loots[randomNumber];
         if (finalLoot != null) {
+            Vector3 offset = new Vector3(0, 1, 0);
+            finalLoot.transform.position = transform.position + offset;
             Instantiate(finalLoot, transform.position, transform.rotation);
         }
         Destroy(transform.gameObject, 5);
